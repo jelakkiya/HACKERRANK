@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+#include <math.h>
+#include <stdlib.h>
+
+int main() {
+
+int n;
+int m;
+int min;
+int value;
+scanf("%d", &n);
+// Complete the code to print the pattern.
+
+m = 2 * n -1;
+
+for (int i = 0; i < m; i ++){
+    min = 1 + abs(i-n+1);
+    for (int j = 0; j < m; j ++){
+        value = 1 + abs(j-n+1);
+        if (value > min) printf("%d " , value);
+        else printf("%d ", min);
+    } 
+    printf("\n");
+}
+
+return 0;
+}
