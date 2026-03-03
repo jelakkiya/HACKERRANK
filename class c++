@@ -1,0 +1,24 @@
+#include<iostream>
+#include<string>
+using namespace std;
+class student
+{
+public:
+    string first_name;
+    string last_name;
+    int age;
+    int standard;
+    void in()
+    {
+        cout << age<<'\n'<<last_name<<','<< ' '<< first_name << '\n' << standard << '\n' << '\n';
+        cout << age << ',' << first_name << ',' << last_name << ',' << standard;
+
+    }
+};
+
+int main()
+{
+    student st1;
+    cin >> st1.age >> st1.first_name >> st1.last_name >> st1.standard;
+    st1.in();
+}
