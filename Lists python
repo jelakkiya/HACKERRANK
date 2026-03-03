@@ -1,0 +1,16 @@
+if __name__ == '__main__':
+    N = int(input())
+    my_list = []
+    
+    for _ in range(N):
+        # Split the input into command and arguments
+        cmd_input = input().split()
+        command = cmd_input[0]
+        args = cmd_input[1:]
+        
+        if command == "print":
+            print(my_list)
+        else:
+            # Map the string command to the actual list method
+            # Convert string arguments to integers using map
+            getattr(my_list, command)(*(map(int, args)))
