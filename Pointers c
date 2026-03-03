@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void update(int *a, int *b) {
+    // Store original values to avoid using modified values in the second calculation
+    int val_a = *a;
+    int val_b = *b;
+    
+    // 1. Update 'a' to the sum: a + b
+    *a = val_a + val_b;
+    
+    // 2. Update 'b' to the absolute difference: |a - b|
+    // We use abs() from stdlib.h for the absolute value
+    *b = abs(val_a - val_b);
+}
+
+int main() {
+    int a, b;
+    int *pa = &a, *pb = &b;
+    
+    scanf("%d %d", &a, &b);
+    update(pa, pb);
+    printf("%d\n%d", a, b);
+
+    return 0;
+}
