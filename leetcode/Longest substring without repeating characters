@@ -1,0 +1,29 @@
+#include <string>
+#include <unordered_map>
+#include <algorithm>
+
+class Solution {
+public:
+    int lengthOfLongestSubstring(std::string s) {
+        // Map to store the last seen index of each character
+        std::unordered_map<char, int> charMap;
+        int maxLength = 0;
+        int start = 0; // Left pointer of the window
+
+        for (int end = 0; end < s.length(); ++end) {
+            // If the character was seen before and is within the current window
+            if (charMap.find(s[end]) != charMap.end() && charMap[s[end]] >= start) {
+                // Move the start pointer to the right of the previous occurrence
+                start = charMap[s[end]] + 1;
+            }
+
+            // Update/insert the last seen index of the character
+            charMap[s[end]] = end;
+
+            // Calculate current window size and update maxLength
+            maxLength = std::max(maxLength, end - start + 1);
+        }
+
+        return maxLength;
+    }
+};
