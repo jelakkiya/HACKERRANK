@@ -1,0 +1,17 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        # Define 32-bit signed integer boundaries
+        MIN_INT, MAX_INT = -2**31, 2**31 - 1
+        
+        # Determine the sign and work with the absolute value
+        sign = -1 if x < 0 else 1
+        x = abs(x)
+        
+        # Reverse the digits using string slicing
+        res = int(str(x)[::-1]) * sign
+        
+        # Check if the result falls outside the 32-bit range
+        if res < MIN_INT or res > MAX_INT:
+            return 0
+            
+        return res
