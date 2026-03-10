@@ -1,0 +1,31 @@
+class Solution:
+    def divide(self, dividend: int, divisor: int) -> int:
+        # Constants for 32-bit range
+        MAX_INT = 2**31 - 1
+        MIN_INT = -2**31
+        
+        # Handle overflow case specifically
+        if dividend == MIN_INT and divisor == -1:
+            return MAX_INT
+        
+        # Determine the sign of the result
+        # If signs are different, result is negative
+        negative = (dividend < 0) != (divisor < 0)
+        
+        # Work with absolute values
+        a, b = abs(dividend), abs(divisor)
+        quotient = 0
+        
+        # Main bitwise division logic
+        while a >= b:
+            temp_divisor, count = b, 1
+            # Double the divisor until it's larger than the dividend
+            while a >= (temp_divisor << 1):
+                temp_divisor <<= 1
+                count <<= 1
+            
+            # Subtract the largest found multiple and add to quotient
+            a -= temp_divisor
+            quotient += count
+            
+        return -quotient if negative else quotient
