@@ -1,0 +1,8 @@
+class Solution:
+    def isPalindrome(self, x: int) -> bool:
+        # Step 1: Handle negative numbers (never palindromes)
+        if x < 0:
+            return False
+            
+        # Step 2: Compare the number to its reversed string version
+        return str(x) == str(x)[::-1]
